@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Project Board</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/style.css" />
+  <script src="assets/scripts/app.js" defer type="module"></script>
+</head>
+
+<body class="home">
+  <div class="background background--top-left"></div>
+  <div class="background background--bottom-right"></div>
+
+  <div class="overlay"></div>
+  <template id="tooltip">
+    <h4 class="tooltip__title">More Info</h4>
+    <p></p>
+  </template>
+
+  <section class="section__project-info">
+    <h1>Drag and drop</h1>
+    <h3>Dynamic, natural task handler</h3>
+    <p>This is a dynamic drag and drop handler</p>
+  </section>
+  <section class="section__project-create">
+    <button id="form-popup-btn" class="button">Create new Project</button>
+    <div class="form__container">
+      <button class="close-btn">&Cross;</button>
+      <form action="" id="form" class="form">
+
+
+        <h2 class="form__title">Create Project</h2>
+
+        <div class="form__control">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="Enter title">
+          <small>Error message</small>
+        </div>
+
+        <div class="form__control">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Enter description">
+          <small>Error message</small>
+        </div>
+
+        <div class="form__control">
+          <label for="notes">Notes</label>
+          <input type="text" id="notes" placeholder="Enter notes">
+          <small>Error message</small>
+        </div>
+
+        <button type="submit" class="button">Create</button>
+
+      </form>
+    </div>
+
+  </section>
+  <section class="section section__projects">
+    <div id="active-projects" class="projects projects--active">
+      <header class="projects__title">
+        <h2 class="title">Active Projects</h2>
+      </header>
+      <ul class="projects__list">
+        <!-- List items created dynamically in JavaScript -->
+      </ul>
+    </div>
+    <div id="finished-projects" class="projects projects--finished">
+      <header class="projects__title">
+        <h2 class="title">Finished Projects</h2>
+      </header>
+      <ul class="projects__list">
+        <!-- List items created dynamically in JavaScript -->
+      </ul>
+    </div>
+  </section>
+</body>
+
+</html>

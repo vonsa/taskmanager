@@ -1,0 +1,40 @@
+/*
+  Main button styling
+*/
+
+button {
+  background: none;
+  border: none;
+}
+
+.button {
+  font: inherit;
+  background: var(--color-tertiary);
+  color: $color-white;
+  padding: 1.2rem 2.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 2.4rem;
+
+  &:hover,
+  &:active {
+    background: var(--color-secondary);
+  }
+}
+
+.button.alt {
+  color: var(--color-primary);
+  background: $color-white;
+  border: 1px solid var(--color-tertiary);
+
+  &:hover,
+  &:active {
+    background: var(--color-quad);
+    color: $color-white;
+    border-color: var(--color-quad);
+  }
+}
+
+.button:focus {
+  outline: none;
+}

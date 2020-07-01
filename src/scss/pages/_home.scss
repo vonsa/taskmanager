@@ -1,0 +1,54 @@
+body.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba($color-secondary, 0.05),
+    rgba($color-white-colored-2, 0.06) 10%
+  );
+
+  @media only screen and (max-width: $media-medium) {
+    display: block;
+  }
+}
+
+// Colored triangles in corners
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  @media only screen and (max-width: $media-medium) {
+    display: none;
+  }
+
+  &--top-left {
+    background: linear-gradient(to left, $color-secondary, $color-quad);
+    clip-path: polygon(0% 0%, 35% 0%, 0% 35%, 0% 0%);
+  }
+  &--bottom-right {
+    background: linear-gradient(to right, $color-secondary, $color-quad);
+    clip-path: polygon(100% 100%, 65% 100%, 100% 65%, 100% 100%);
+  }
+}
+
+// Section - Project information
+.section__project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 6rem 0;
+}
+
+// Section - Create a project
+.section__project-create {
+  @media only screen and (max-width: $media-medium) {
+    text-align: center;
+  }
+}

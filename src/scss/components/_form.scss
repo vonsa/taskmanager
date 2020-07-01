@@ -1,0 +1,121 @@
+/*
+  Contains:
+    - Form container specific styling
+    - Form styling
+*/
+
+/*
+  Form container specific styling
+*/
+.form__container {
+  // Hidden by default
+  background-color: $color-white;
+  padding: 5rem;
+  border-radius: 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  display: none;
+
+  // Change dimensions & padding for smaller screen sizes
+  @media only screen and (max-width: $media-small) {
+    padding: 3rem;
+    height: 80vh;
+    width: 80vw;
+  }
+
+  // Show form when visible class is added
+  &.visible {
+    display: block;
+  }
+
+  // Close button
+  & .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    font-size: 2.4rem;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+}
+
+/*
+  Form styling
+*/
+
+.form {
+  // Form control groups
+  &__control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+
+    // Error specific styling
+    & small {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 14px;
+      color: var(--color-error);
+      visibility: hidden;
+    }
+
+    &.error {
+      & small {
+        visibility: visible;
+      }
+      & input {
+        border-width: 2px;
+        border-color: var(--color-error);
+      }
+    }
+    // Success specific styling
+    &.success {
+      & input {
+        border-width: 2px;
+        border-color: var(--color-success);
+      }
+    }
+  }
+
+  // Input styling
+  & input {
+    width: 100%;
+    display: block;
+    border: 1px solid $color-grey;
+    border-radius: 0.7rem;
+    background-color: $color-white;
+    transition: all 0.4s ease-out;
+    padding: 0.6rem 1rem;
+    padding: 1.4rem 1.8rem;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  & input:-webkit-autofill {
+    background-color: $color-white !important;
+  }
+
+  & input:focus {
+    box-shadow: 2px 4px 1rem rgba($color-black, 0.4);
+    border: none;
+    outline: none;
+    transform: translateY(-3px);
+  }
+
+  & label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  & .button {
+    margin-top: 20px;
+  }
+}
