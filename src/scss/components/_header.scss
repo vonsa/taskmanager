@@ -1,0 +1,20 @@
+// Section - Project information
+.section__project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+  margin: 0 0 2rem 0;
+
+  @media only screen and (max-width: $media-medium) {
+    height: 66vh;
+  }
+  & .project-info__btn {
+    display: none;
+    margin-top: 2rem;
+    @media only screen and (max-width: $media-medium) {
+      display: block;
+    }
+  }
+}

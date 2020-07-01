@@ -6,6 +6,7 @@
 
 html {
   font-size: 62.5%; // 1rem = 10px
+  scroll-behavior: smooth;
 
   @media only screen and (max-width: $media-medium) {
     font-size: 60%;
@@ -23,6 +24,10 @@ body {
   @media only screen and (max-width: $media-small) {
     text-align: center;
   }
+}
+
+a {
+  text-decoration: none;
 }
 
 ul {
