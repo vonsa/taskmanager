@@ -47,9 +47,9 @@ body.home {
   @media only screen and (max-width: $media-medium) {
     text-align: center;
     margin: 0;
-    padding-top: 10rem;
+    padding-top: 11rem;
     padding-bottom: 4rem;
     background: var(--color-quad);
-    clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 8%, 100% 0%, 100% 100%, 0% 100%);
   }
 }

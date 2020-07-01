@@ -10,6 +10,14 @@
   @media only screen and (max-width: $media-medium) {
     height: 66vh;
   }
+
+  & p {
+    width: 52rem;
+    max-width: 100vw;
+    padding: 4rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
   & .project-info__btn {
     display: none;
     margin-top: 2rem;

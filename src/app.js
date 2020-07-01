@@ -104,10 +104,15 @@ class App {
 const app = new App();
 
 // Add 2 dummy projects
-app.createProject('Hello there', 'Testing new method', 'Tooltip YO', 'active');
 app.createProject(
-  'Hello there 2',
-  'Testing new method 2',
-  'Tooltip YO 2',
+  'Deliver the new placefinder Web app',
+  'Our client needs this done ASAP',
+  "Don't forget to discuss the new proposition with John",
+  'active'
+);
+app.createProject(
+  'Build a portfolio',
+  'Improve brand recognition',
+  'Incorporate A/B testing',
   'finished'
 );
