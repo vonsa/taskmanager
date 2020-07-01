@@ -74,6 +74,7 @@ html {
       font-size: 55%; } }
 
 body {
+  position: relative;
   box-sizing: border-box;
   min-height: 100vh;
   overflow-x: hidden; }
@@ -186,7 +187,6 @@ button {
   @media only screen and (max-width: 550px) {
     .form__container {
       padding: 3rem;
-      height: 80vh;
       width: 80vw; } }
   .form__container.visible {
     display: block; }
@@ -253,7 +253,8 @@ button {
 .projects__title--main {
   display: none;
   margin-bottom: 2rem;
-  color: #fff; }
+  color: #fff;
+  text-align: center; }
   @media only screen and (max-width: 900px) {
     .projects__title--main {
       display: block; } }
@@ -341,7 +342,6 @@ button {
     @media only screen and (max-width: 550px) {
       .projects__card {
         flex-direction: column;
-        text-align: center;
         position: relative;
         padding: 3rem; } }
     .projects__card .card__tooltip {
@@ -353,7 +353,7 @@ button {
       z-index: 10;
       position: absolute;
       left: 50%;
-      transition: all 0.6s ease-out;
+      transition: transform 0.6s ease-out;
       display: none; }
       @media only screen and (max-width: 900px) {
         .projects__card .card__tooltip {
@@ -364,6 +364,7 @@ button {
           height: 100vh;
           display: flex;
           justify-content: center;
+          align-items: center;
           flex-direction: column;
           text-align: center; } }
       .projects__card .card__tooltip .tooltip__title {
@@ -382,14 +383,20 @@ button {
           .projects__card.tooltip-showing .card__tooltip {
             display: flex;
             animation: tooltipInSmallerDevices 0.4s ease-out backwards; } }
+        @media only screen and (max-width: 900px) {
+          .projects__card.tooltip-showing .card__tooltip p {
+            font-size: 4rem;
+            max-width: 60rem; } }
     .projects__card.tooltip-end {
       animation: tooltipZoomOut 0.2s ease-in-out; }
       @media only screen and (max-width: 900px) {
         .projects__card.tooltip-end {
           animation: none; } }
-    @media only screen and (max-width: 550px) {
-      .projects__card .card__content {
-        margin-bottom: 2rem; } }
+    .projects__card .card__content {
+      margin-right: 2rem; }
+      @media only screen and (max-width: 550px) {
+        .projects__card .card__content {
+          margin-bottom: 2rem; } }
     .projects__card__title {
       margin: 10px;
       width: 135px; }
@@ -451,7 +458,8 @@ body.home {
 
 .background {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -472,9 +480,9 @@ body.home {
 
 @media only screen and (max-width: 900px) {
   .section.main {
-    text-align: center;
     margin: 0;
-    padding-top: 11rem;
+    margin-top: -3rem;
+    padding-top: 12rem;
     padding-bottom: 4rem;
     background: var(--color-quad);
-    clip-path: polygon(0 8%, 100% 0%, 100% 100%, 0% 100%); } }
+    background: linear-gradient(176deg, transparent 8%, var(--color-quad) 8.2%); } }

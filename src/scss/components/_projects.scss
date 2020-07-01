@@ -2,6 +2,7 @@
   display: none;
   margin-bottom: 2rem;
   color: $color-white;
+  text-align: center;
 
   @media only screen and (max-width: $media-medium) {
     display: block;
@@ -140,7 +141,7 @@
 
     @media only screen and (max-width: $media-small) {
       flex-direction: column;
-      text-align: center;
+
       position: relative;
       padding: 3rem;
     }
@@ -155,7 +156,7 @@
       z-index: 10;
       position: absolute;
       left: 50%;
-      transition: all 0.6s ease-out;
+      transition: transform 0.6s ease-out;
       display: none;
 
       @media only screen and (max-width: $media-medium) {
@@ -166,6 +167,7 @@
         height: 100vh;
         display: flex;
         justify-content: center;
+        align-items: center;
         flex-direction: column;
         text-align: center;
       }
@@ -190,6 +192,13 @@
           display: flex;
           animation: tooltipInSmallerDevices 0.4s ease-out backwards;
         }
+
+        & p {
+          @media only screen and (max-width: $media-medium) {
+            font-size: 4rem;
+            max-width: 60rem;
+          }
+        }
       }
     }
 
@@ -204,6 +213,7 @@
 
     // card content
     & .card__content {
+      margin-right: 2rem;
       @media only screen and (max-width: $media-small) {
         margin-bottom: 2rem;
       }
