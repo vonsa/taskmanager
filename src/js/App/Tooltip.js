@@ -6,12 +6,6 @@ export class Tooltip extends Cmp {
     super(hostElementId);
     this.closeNotifier = closeNotifierFunction;
     this.text = text;
-    this.closeTooltip = (overlay) => {
-      overlay.classList.remove('visible');
-      DOMHelper.clearEventListeners(overlay);
-      this.detach();
-      this.closeNotifier();
-    };
     this.create();
   }
 
@@ -32,9 +26,17 @@ export class Tooltip extends Cmp {
     // Removes tooltip on click
     tooltipElement.addEventListener(
       'click',
-      this.closeTooltip.bind(null, overlay)
+      this.closeTooltip.bind(this, overlay)
     );
-    overlay.addEventListener('click', this.closeTooltip.bind(null, overlay));
+    overlay.addEventListener('click', this.closeTooltip.bind(this, overlay));
     this.element = tooltipElement;
+  }
+
+  // Close tooltip & overlay and remove overlay's event listener
+  closeTooltip(overlay) {
+    overlay.classList.remove('visible');
+    DOMHelper.clearEventListeners(overlay);
+    this.detach();
+    this.closeNotifier();
   }
 }
