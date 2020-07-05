@@ -76,6 +76,20 @@
     }
   }
 
+  &__results-message {
+    padding: 4rem;
+    font-weight: 400;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 1rem;
+    color: #777;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
   /* Finished projects list - end */
 
   &__title {

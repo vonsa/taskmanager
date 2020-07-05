@@ -11,6 +11,9 @@ export class ProjectList {
     this.type = type;
     this.projects = [];
     this.connectDroppable();
+    this.thisListResultMessage = document.querySelector(
+      `#${type}-projects .projects__results-message`
+    );
   }
 
   connectDroppable() {
@@ -97,6 +100,8 @@ export class ProjectList {
   // This function is passed to the other instance of ProjectList
   // Not targeted directly inside of ProjectList, but the copied reference is targeted as switchHandler
   addProject(project) {
+    this.thisListResultMessage.classList.remove('active');
+
     this.projects.push(project);
     DOMH.moveElement(project.id, `#${this.type}-projects ul`);
     project.update(this.switchProject.bind(this), this.type);
@@ -108,5 +113,9 @@ export class ProjectList {
   switchProject(projectId) {
     this.switchHandler(this.projects.find((p) => p.id === projectId));
     this.projects = this.projects.filter((p) => p.id !== projectId);
+
+    if (this.projects.length === 0) {
+      this.thisListResultMessage.classList.add('active');
+    }
   }
 }
