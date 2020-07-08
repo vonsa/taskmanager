@@ -17,8 +17,15 @@ export class FormControl {
     this.addEventListeners(callBackFunction);
   }
 
+  /*
+
+
+    Retrieve DOM form elements + overlay
+
+    
+  */
+
   retrieveFormElements() {
-    // Retrieve form elements + overlay
     this.formContainer = document.querySelector('.form__container');
     this.form = document.getElementById('form');
     this.inputs = document.querySelectorAll('.form input');
@@ -29,7 +36,14 @@ export class FormControl {
     this.overlay = document.querySelector('.overlay');
   }
 
-  // Will add supplied message as innerText to the input item's small element and activates it's visibility
+  /*
+
+
+    Will add supplied message as innerText to the input item's small element and activates it's visibility
+
+    
+  */
+
   showError(input, message) {
     const formControl = input.parentElement;
     const errorMessage = formControl.querySelector('small');
@@ -37,20 +51,39 @@ export class FormControl {
     errorMessage.innerText = message;
   }
 
-  // Display input success indication
+  /*
+
+
+    Display input success indication
+
+    
+  */
+
   showSuccess(input) {
     const formControl = input.parentElement;
     formControl.className = 'form__control success';
   }
 
-  // First letter of input id to UPPERCASE
+  /*
+
+
+    Returns the input id with the first letter set to UPPERCASE
+
+    
+  */
+
   messageToUpper(input) {
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
   }
 
-  /* 
+  /*
+
+
     Validate form inputs
+
+    
   */
+
   checkRequired(callBackFunction, title, ...inputs) {
     // Check if title value is empty
     if (title.value !== '') {
@@ -71,8 +104,6 @@ export class FormControl {
         tooltipText: this.tooltip.value,
       };
 
-      console.log(projectInfo);
-
       // Pass Project information to the createProject function for further processing.
       callBackFunction(projectInfo);
       return true;
@@ -83,7 +114,14 @@ export class FormControl {
     }
   }
 
-  // Close the form and remove overlay's event listener
+  /*
+
+
+    Close the form and remove overlay's event listener
+
+    
+  */
+
   closeProjectCreationForm() {
     this.formContainer.classList.remove('visible');
     this.overlay.classList.remove('visible');
@@ -91,9 +129,16 @@ export class FormControl {
     DOMHelper.clearEventListeners(this.overlay);
   }
 
+  /*
+
+
+    - Add create project button functionality to open the form
+    - Adds closing functionality to the overlay when opened
+
+    
+  */
+
   addEventListeners(callBackFunction) {
-    // Add create project button functionality to open the form
-    // Adds closing functionality to the overlay when opened
     this.popupBtn.addEventListener('click', (e) => {
       this.overlay = document.querySelector('.overlay');
       this.formContainer.classList.add('visible');

@@ -17,6 +17,14 @@ export class ProjectItem {
     this.connectDrag();
   }
 
+  /*
+
+
+    Create project list HTML element
+
+    
+  */
+
   renderElement(projectInfo, projectItemId) {
     const li = document.createElement('li');
     li.dataset.extraInfo = projectInfo.tooltipText || '';
@@ -39,12 +47,18 @@ export class ProjectItem {
     return li;
   }
 
-  // Display the tooltip
+  /*
+
+
+    Display the tooltip
+
+    
+  */
+
   showMoreInfoHandler() {
     if (this.hasActiveTooltip) {
       return;
     }
-    // Create a new tooltip
     const tooltipText = this.element.dataset.extraInfo;
 
     // Import Tooltip class & instantiate
@@ -56,13 +70,19 @@ export class ProjectItem {
         tooltipText,
         this.id
       );
-      // Create a new tooltip
-      this.tooltip.attach();
+
       this.hasActiveTooltip = 'true';
     });
   }
 
-  // Add data to the drag event, which can be extracted on the drop event
+  /*
+
+
+    Add data to the drag event, which can be extracted on the drop event
+
+    
+  */
+
   connectDrag() {
     this.element.addEventListener('dragstart', (event) => {
       event.dataTransfer.setData('text/plain', this.id);
@@ -70,16 +90,28 @@ export class ProjectItem {
     });
   }
 
-  // Add event listener to the more info button to show the tooltip
+  /*
+
+
+    Add event listener to the more info button to show the tooltip
+
+    
+  */
+
   connectMoreInfoButton() {
     const moreInfoBtn = this.element.querySelector('button:first-of-type');
     moreInfoBtn.addEventListener('click', this.showMoreInfoHandler.bind(this));
   }
 
   /*
-    Set or change the switch button
+
+
+    Set or change the project list item's switch (Activate or Finish) button
     On click, switch button will transfer the project to the other list
+
+    
   */
+
   connectSwitchButton(type) {
     let switchBtn = this.element.querySelector('button:last-of-type');
     switchBtn = DOMHelper.clearEventListeners(switchBtn);
@@ -90,9 +122,17 @@ export class ProjectItem {
     );
   }
 
-  // Called by the addProject function of the ProjectList instance, to switch around the switch handling functions
+  /*
+
+
+    The update funcction is called by the addProject function of a ProjectList instance.
+    Updates the list item's switch button functionality.
+
+    
+  */
+
   update(updateProjectListsFn, type) {
-    this.updateProjectListsHandler = updateProjectListsFn;
+    this.updateProjectListsHandler = updateProjectListsFn; // The updateProjectListsHandler function is redefined as the switch function from the opposing ProjectList instance.
     this.connectSwitchButton(type);
   }
 }

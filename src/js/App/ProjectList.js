@@ -16,6 +16,14 @@ export class ProjectList {
     );
   }
 
+  /*
+
+
+    Add drag & drop events
+
+    
+  */
+
   connectDroppable() {
     // Select active or finished DOM project list
     const list = document.querySelector(`#${this.type}-projects ul`);
@@ -91,8 +99,14 @@ export class ProjectList {
     });
   }
 
-  // This function is called by the other instance of ProjectList
-  // Not targeted directly inside of ProjectList, but the copied reference is targeted as switchHandler
+  /*
+
+
+    addProject is called by the other instance of ProjectList
+
+    
+  */
+
   addProject(project) {
     this.thisListResultMessage.classList.remove('active');
 
@@ -101,8 +115,15 @@ export class ProjectList {
     project.update(this.switchProject.bind(this), this.type);
   }
 
-  // Passed to instances of ProjectItem
-  // Executed when either an Active or Finished button is pressed
+  /*
+
+
+    The switchProject function is passed to instances of ProjectItem and
+    executed when either an Active or Finished button is pressed
+
+    
+  */
+
   switchProject(projectId) {
     // Add project to the other instance of ProjectList
     this.otherProjectList.addProject(

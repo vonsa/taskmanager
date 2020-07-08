@@ -17,19 +17,6 @@ const projectTwo = {
   state: 'finished',
 };
 
+// Create 2 dummy projects
 app.createProject(projectOne);
 app.createProject(projectTwo);
-
-// Add 2 dummy projects
-// app.createProject(
-//   'Deliver the new placefinder Web app',
-//   'Our client needs this done ASAP',
-//   "Don't forget to discuss the new proposition with John",
-//   'active'
-// );
-// app.createProject(
-//   'Build a portfolio',
-//   'Improve brand recognition',
-//   'Incorporate A/B testing',
-//   'finished'
-// );
