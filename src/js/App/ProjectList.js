@@ -91,13 +91,7 @@ export class ProjectList {
     });
   }
 
-  // Set by App instance
-  // the addProject function of the other ProjectList instance is defined as switchHandlerFunction
-  setSwitchHandlerFunction(switchHandlerFunction) {
-    this.switchHandler = switchHandlerFunction;
-  }
-
-  // This function is passed to the other instance of ProjectList
+  // This function is called by the other instance of ProjectList
   // Not targeted directly inside of ProjectList, but the copied reference is targeted as switchHandler
   addProject(project) {
     this.thisListResultMessage.classList.remove('active');
@@ -109,11 +103,15 @@ export class ProjectList {
 
   // Passed to instances of ProjectItem
   // Executed when either an Active or Finished button is pressed
-  // this.switchHandler = addProject function of the other list
   switchProject(projectId) {
-    this.switchHandler(this.projects.find((p) => p.id === projectId));
+    // Add project to the other instance of ProjectList
+    this.otherProjectList.addProject(
+      this.projects.find((p) => p.id === projectId)
+    );
+    // Remove project from this projects array
     this.projects = this.projects.filter((p) => p.id !== projectId);
 
+    // Show 'No projects in this list' indicator if empty
     if (this.projects.length === 0) {
       this.thisListResultMessage.classList.add('active');
     }

@@ -14,7 +14,7 @@ export class FormControl {
       - description
       - tooltip info
     */
-    this.init(callBackFunction);
+    this.addEventListeners(callBackFunction);
   }
 
   retrieveFormElements() {
@@ -24,7 +24,7 @@ export class FormControl {
     this.inputs = document.querySelectorAll('.form input');
     this.title = document.getElementById('title');
     this.description = document.getElementById('description');
-    this.notes = document.getElementById('notes');
+    this.tooltip = document.getElementById('notes');
     this.popupBtn = document.getElementById('form-popup-btn');
     this.overlay = document.querySelector('.overlay');
   }
@@ -64,8 +64,17 @@ export class FormControl {
           }
         });
       }
+
+      const projectInfo = {
+        title: title.value,
+        description: this.description.value,
+        tooltipText: this.tooltip.value,
+      };
+
+      console.log(projectInfo);
+
       // Pass Project information to the createProject function for further processing.
-      callBackFunction(title.value, this.description.value, this.notes.value);
+      callBackFunction(projectInfo);
       return true;
     } else {
       // Show error indication if title value is empty
@@ -82,7 +91,7 @@ export class FormControl {
     DOMHelper.clearEventListeners(this.overlay);
   }
 
-  init(callBackFunction) {
+  addEventListeners(callBackFunction) {
     // Add create project button functionality to open the form
     // Adds closing functionality to the overlay when opened
     this.popupBtn.addEventListener('click', (e) => {
@@ -108,7 +117,7 @@ export class FormControl {
         callBackFunction,
         this.title,
         this.description,
-        this.notes
+        this.tooltip
       );
       if (succeeded) {
         this.inputs.forEach((input) => {

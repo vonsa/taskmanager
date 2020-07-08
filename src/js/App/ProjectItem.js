@@ -1,4 +1,5 @@
 import { DOMHelper } from '../Utility/DOMHelper.js';
+import { lastIndexOf } from 'lodash';
 
 /* 
   Every project is created as an instance of the ProjectItem class
@@ -6,14 +7,36 @@ import { DOMHelper } from '../Utility/DOMHelper.js';
 
 export class ProjectItem {
   // updateProjectListsFunction parameter references to either the active or finished ProjectList instance. That allows the list to add itself to the other list.
-  constructor(id, updateProjectListsFunction, type) {
-    this.id = id;
-    this.element = document.getElementById(id);
+  constructor(projectInfo, projectItemId, updateProjectListsFunction) {
+    this.id = projectItemId;
+    this.element = this.renderElement(projectInfo, projectItemId);
     this.hasActiveTooltip = false;
     this.updateProjectListsHandler = updateProjectListsFunction; // Executed when either the Activate of Finish button is pressed
     this.connectMoreInfoButton();
-    this.connectSwitchButton(type);
+    this.connectSwitchButton(projectInfo.state);
     this.connectDrag();
+  }
+
+  renderElement(projectInfo, projectItemId) {
+    const li = document.createElement('li');
+    li.dataset.extraInfo = projectInfo.tooltipText || '';
+    li.id = projectItemId;
+    li.draggable = true;
+    li.classList.add('projects__card-container');
+    li.innerHTML = `
+          <div class="projects__card">
+            <div class="card__content">
+              <h3 class="card__title">${projectInfo.title || ''}</h3>
+              <p class="card__description">${projectInfo.description || ''}</p>
+            </div>
+            <div class="card__btns">
+              <button class="button alt card__btns-info">Info</button>
+              <button class="button card__btns-finish">${
+                projectInfo.state === 'active' ? 'Finish' : 'Activate'
+              }</button>
+            </div>
+          </div>`;
+    return li;
   }
 
   // Display the tooltip
