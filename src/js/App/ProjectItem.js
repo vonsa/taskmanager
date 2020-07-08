@@ -32,7 +32,7 @@ export class ProjectItem {
             <div class="card__btns">
               <button class="button alt card__btns-info">Info</button>
               <button class="button card__btns-finish">${
-                projectInfo.state === 'active' ? 'Finish' : 'Activate'
+                projectInfo.state === 'finished' ? 'Activate' : 'Finish'
               }</button>
             </div>
           </div>`;
@@ -83,7 +83,7 @@ export class ProjectItem {
   connectSwitchButton(type) {
     let switchBtn = this.element.querySelector('button:last-of-type');
     switchBtn = DOMHelper.clearEventListeners(switchBtn);
-    switchBtn.textContent = type === 'active' ? 'Finish' : 'Activate';
+    switchBtn.textContent = type === 'finished' ? 'Activate' : 'Finish';
     switchBtn.addEventListener(
       'click',
       this.updateProjectListsHandler.bind(null, this.id)
