@@ -1,5 +1,4 @@
 import { DOMHelper } from '../Utility/DOMHelper.js';
-import { lastIndexOf } from 'lodash';
 
 /* 
   Every project is created as an instance of the ProjectItem class

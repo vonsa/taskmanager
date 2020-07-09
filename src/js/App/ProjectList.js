@@ -1,4 +1,3 @@
-import { ProjectItem as PrjItem } from './ProjectItem.js';
 import { DOMHelper as DOMH } from '../Utility/DOMHelper.js';
 
 export class ProjectList {

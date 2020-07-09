@@ -1,4 +1,3 @@
-// import * as _ from 'lodash/array';
 import { ProjectList } from './App/ProjectList.js';
 import { ProjectItem as PrjItem } from './App/ProjectItem.js';
 import { FormControl } from './App/FormControl';
