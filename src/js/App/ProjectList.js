@@ -34,7 +34,6 @@ export class ProjectList {
     list.addEventListener('dragstart', (event) => {
       this.lastDraggedElement = event.target;
       this.otherProjectList.lastDraggedElement = event.target;
-
       event.target.classList.add('current-drag');
       event.target.classList.remove('drag-out');
     });
@@ -83,13 +82,12 @@ export class ProjectList {
       Executes the switchProject function
     */
     list.addEventListener('drop', (event) => {
+      event.preventDefault();
       event.target.closest(`ul`).classList.remove('droppable');
-
       // return if project is dropped in the same list
       if (this.projects.find((p) => p.id === this.lastDraggedElement.id)) {
         return;
       }
-
       // Trigger a click on the activate or finish button to initiate the switch to the other list
       document
         .getElementById(this.lastDraggedElement.id)
